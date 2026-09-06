@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Agar nyaman dimainkan di HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>English Adventure</title>
+
+    <!-- CSS akan kita hubungkan nanti -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOADING SCREEN
+    ====================================================== -->
+
+    <div id="loadingScreen" class="screen">
+
+        <div class="loading-content">
+
+            <div class="game-logo">
+                📚
+            </div>
+
+            <h1>English Adventure</h1>
+
+            <p>Learn • Play • Explore</p>
+
+            <div class="loading-bar">
+                <div id="loadingProgress"></div>
+            </div>
+
+            <p id="loadingText">
+                Preparing your adventure...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN GAME
+    ====================================================== -->
+
+    <div id="game" class="game-container">
+
+
+        <!-- =================================================
+             TOP PLAYER BAR
+        ================================================== -->
+
+        <header class="top-bar">
+
+            <!-- PLAYER -->
+            <div class="player-info">
+
+                <div class="player-avatar" id="playerAvatar">
+                    🧑‍🎓
+                </div>
+
+                <div>
+
+                    <h2 id="playerName">
+                        English Hero
+                    </h2>
+
+                    <p>
+                        Level <span id="playerLevel">1</span>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PLAYER STATS -->
+
+            <div class="player-stats">
+
+                <div class="stat">
+                    ❤️
+                    <span id="playerHP">100</span>
+                </div>
+
+                <div class="stat">
+                    ⭐
+                    <span id="playerEXP">0</span>
+                </div>
+
+                <div class="stat">
+                    🪙
+                    <span id="playerCoins">0</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             EXP BAR
+        ================================================== -->
+
+        <div class="exp-section">
+
+            <div class="exp-label">
+
+                <span>
+                    EXP
+                </span>
+
+                <span>
+                    <span id="currentEXP">0</span> /
+                    <span id="requiredEXP">100</span>
+                </span>
+
+            </div>
+
+            <div class="exp-bar">
+
+                <div
+                    id="expProgress"
+                    class="exp-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             HOME SCREEN
+        ================================================== -->
+
+        <main id="homeScreen" class="screen-content">
+
+            <section class="hero-card">
+
+                <div class="hero-character" id="heroCharacter">
+                    🧑‍🎓
+                </div>
+
+                <div class="hero-text">
+
+                    <h1>
+                        Welcome, Hero!
+                    </h1>
+
+                    <p>
+                        Explore Wordland and master English
+                        through exciting challenges.
+                    </p>
+
+                </div>
+
+                <button
+                    id="startAdventureBtn"
+                    class="primary-button">
+
+                    ⚔️ Start Adventure
+
+                </button>
+
+            </section>
+
+
+            <!-- =============================================
+                 WORLD MAP
+            ============================================== -->
+
+            <section class="world-section">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>🗺️ Wordland</h2>
+
+                        <p>
+                            Complete each world to unlock
+                            the next adventure.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="worldMap" class="world-map">
+
+
+                    <!-- WORLD 1 -->
+
+                    <article
+                        class="world-card unlocked"
+                        data-world="1">
+
+                        <div class="world-icon">
+                            🌳
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 01
+                            </span>
+
+                            <h3>
+                                Forest of Words
+                            </h3>
+
+                            <p>
+                                Animals & Colors
+                            </p>
+
+                            <div
+                                id="worldStars1"
+                                class="world-stars">
+
+                                ☆☆☆
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="1">
+
+                            PLAY
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 2 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="2">
+
+                        <div class="world-icon">
+                            🏫
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 02
+                            </span>
+
+                            <h3>
+                                Happy School
+                            </h3>
+
+                            <p>
+                                School Vocabulary
+                            </p>
+
+                            <div
+                                id="worldStars2"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="2"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 3 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="3">
+
+                        <div class="world-icon">
+                            🏠
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 03
+                            </span>
+
+                            <h3>
+                                My Little Home
+                            </h3>
+
+                            <p>
+                                Family & House
+                            </p>
+
+                            <div
+                                id="worldStars3"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="3"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 4 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="4">
+
+                        <div class="world-icon">
+                            🍎
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 04
+                            </span>
+
+                            <h3>
+                                Food Village
+                            </h3>
+
+                            <p>
+                                Food & Drinks
+                            </p>
+
+                            <div
+                                id="worldStars4"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="4"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 5 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="5">
+
+                        <div class="world-icon">
+                            🌦️
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 05
+                            </span>
+
+                            <h3>
+                                Weather Valley
+                            </h3>
+
+                            <p>
+                                Weather & Nature
+                            </p>
+
+                            <div
+                                id="worldStars5"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="5"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 6 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="6">
+
+                        <div class="world-icon">
+                            🏙️
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 06
+                            </span>
+
+                            <h3>
+                                City Life
+                            </h3>
+
+                            <p>
+                                Places & Directions
+                            </p>
+
+                            <div
+                                id="worldStars6"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="6"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 7 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="7">
+
+                        <div class="world-icon">
+                            ⏰
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 07
+                            </span>
+
+                            <h3>
+                                Time Village
+                            </h3>
+
+                            <p>
+                                Time & Daily Activities
+                            </p>
+
+                            <div
+                                id="worldStars7"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="7"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 8 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="8">
+
+                        <div class="world-icon">
+                            🧙
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 08
+                            </span>
+
+                            <h3>
+                                Grammar Forest
+                            </h3>
+
+                            <p>
+                                Basic Grammar
+                            </p>
+
+                            <div
+                                id="worldStars8"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="8"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 9 -->
+
+                    <article
+                        class="world-card locked"
+                        data-world="9">
+
+                        <div class="world-icon">
+                            🏰
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                WORLD 09
+                            </span>
+
+                            <h3>
+                                Kingdom of Sentences
+                            </h3>
+
+                            <p>
+                                Sentence Challenge
+                            </p>
+
+                            <div
+                                id="worldStars9"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="9"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- WORLD 10 -->
+
+                    <article
+                        class="world-card locked boss-world"
+                        data-world="10">
+
+                        <div class="world-icon">
+                            🐉
+                        </div>
+
+                        <div class="world-info">
+
+                            <span class="world-number">
+                                FINAL WORLD
+                            </span>
+
+                            <h3>
+                                Dragon of English
+                            </h3>
+
+                            <p>
+                                Final English Challenge
+                            </p>
+
+                            <div
+                                id="worldStars10"
+                                class="world-stars">
+
+                                🔒
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="world-button"
+                            data-world="10"
+                            disabled>
+
+                            🔒
+
+                        </button>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 DAILY REWARD
+            ============================================== -->
+
+            <section class="daily-reward">
+
+                <div>
+
+                    <span class="reward-icon">
+                        🎁
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Daily Reward
+                        </h3>
+
+                        <p>
+                            Come back tomorrow for a reward!
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    id="dailyRewardBtn"
+                    class="secondary-button">
+
+                    CLAIM
+
+                </button>
+
+            </section>
+
+
+            <!-- =============================================
+                 COLLECTION
+            ============================================== -->
+
+            <section class="collection-section">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <h2>
+                            🐾 Character Collection
+                        </h2>
+
+                        <p>
+                            Discover educational friends.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="characterCollection"
+                    class="character-collection">
+
+                    <div class="collection-item unlocked">
+                        🐱
+                    </div>
+
+                    <div class="collection-item locked">
+                        🔒
+                    </div>
+
+                    <div class="collection-item locked">
+                        🔒
+                    </div>
+
+                    <div class="collection-item locked">
+                        🔒
+                    </div>
+
+                    <div class="collection-item locked">
+                        🔒
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =================================================
+             LESSON / STAGE SCREEN
+        ================================================== -->
+
+        <main
+            id="lessonScreen"
+            class="screen-content hidden">
+
+            <button
+                id="lessonBackBtn"
+                class="back-button">
+
+                ← Back to Map
+
+            </button>
+
+
+            <section class="stage-header">
+
+                <div class="stage-icon-large" id="stageIcon">
+                    🌳
+                </div>
+
+                <div>
+
+                    <span id="stageWorld">
+                        WORLD 01
+                    </span>
+
+                    <h1 id="stageTitle">
+                        Forest of Words
+                    </h1>
+
+                    <p id="stageDescription">
+                        Animals & Colors
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUESTION PROGRESS -->
+
+            <section class="question-progress">
+
+                <div class="question-progress-text">
+
+                    <span>
+                        Question
+                        <strong id="questionNumber">
+                            1
+                        </strong>
+                        /
+                        <strong id="totalQuestions">
+                            10
+                        </strong>
+                    </span>
+
+                    <span>
+                        🔥
+                        <strong id="streak">
+                            0
+                        </strong>
+                    </span>
+
+                </div>
+
+                <div class="question-progress-bar">
+
+                    <div
+                        id="questionProgress"
+                        class="question-progress-fill">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUESTION CARD -->
+
+            <section class="question-card">
+
+                <div
+                    id="questionImage"
+                    class="question-image">
+
+                    🍎
+
+                </div>
+
+                <p
+                    id="questionCategory"
+                    class="question-category">
+
+                    VOCABULARY
+
+                </p>
+
+                <h2
+                    id="questionText"
+                    class="question-text">
+
+                    What is this?
+
+                </h2>
+
+
+                <!-- ANSWERS -->
+
+                <div
+                    id="answerContainer"
+                    class="answer-container">
+
+                    <button
+                        class="answer-button"
+                        data-answer="0">
+
+                        Apple
+
+                    </button>
+
+                    <button
+                        class="answer-button"
+                        data-answer="1">
+
+                        Orange
+
+                    </button>
+
+                    <button
+                        class="answer-button"
+                        data-answer="2">
+
+                        Banana
+
+                    </button>
+
+                    <button
+                        class="answer-button"
+                        data-answer="3">
+
+                        Grape
+
+                    </button>
+
+                </div>
+
+
+                <!-- FEEDBACK -->
+
+                <div
+                    id="answerFeedback"
+                    class="answer-feedback">
+
+                </div>
+
+            </section>
+
+
+            <!-- HINT -->
+
+            <button
+                id="hintButton"
+                class="hint-button">
+
+                💡 Hint
+
+            </button>
+
+
+        </main>
+
+
+        <!-- =================================================
+             RESULT SCREEN
+        ================================================== -->
+
+        <main
+            id="resultScreen"
+            class="screen-content hidden">
+
+            <section class="result-card">
+
+                <div
+                    id="resultIcon"
+                    class="result-icon">
+
+                    🏆
+
+                </div>
+
+                <h1 id="resultTitle">
+                    Amazing!
+                </h1>
+
+                <p id="resultMessage">
+                    You completed the challenge!
+                </p>
+
+
+                <!-- SCORE -->
+
+                <div class="result-score">
+
+                    <span>
+                        SCORE
+                    </span>
+
+                    <strong id="finalScore">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <!-- STARS -->
+
+                <div class="result-stars">
+
+                    <span id="finalStars">
+                        ☆☆☆
+                    </span>
+
+                </div>
+
+
+                <!-- RESULT STATS -->
+
+                <div class="result-stats">
+
+                    <div>
+
+                        <strong id="correctAnswers">
+                            0
+                        </strong>
+
+                        <span>
+                            Correct
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <strong id="wrongAnswers">
+                            0
+                        </strong>
+
+                        <span>
+                            Wrong
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <strong id="earnedEXP">
+                            +0
+                        </strong>
+
+                        <span>
+                            EXP
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REWARD -->
+
+                <div class="result-reward">
+
+                    🎁 Reward
+
+                    <strong id="resultReward">
+                        +10 🪙
+                    </strong>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="result-buttons">
+
+                    <button
+                        id="retryButton"
+                        class="secondary-button">
+
+                        🔄 Try Again
+
+                    </button>
+
+                    <button
+                        id="continueButton"
+                        class="primary-button">
+
+                        🗺️ Continue
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =================================================
+             INVENTORY / PROFILE
+        ================================================== -->
+
+        <aside
+            id="profilePanel"
+            class="side-panel hidden">
+
+            <button
+                id="closeProfileBtn"
+                class="close-button">
+
+                ✕
+
+            </button>
+
+            <h2>
+                🧑‍🎓 My Profile
+            </h2>
+
+            <div class="profile-avatar">
+                🧑‍🎓
+            </div>
+
+            <h3 id="profileName">
+                English Hero
+            </h3>
+
+            <p>
+                Level <span id="profileLevel">1</span>
+            </p>
+
+            <div class="profile-stats">
+
+                <div>
+                    ⭐ EXP
+                    <strong id="profileEXP">
+                        0
+                    </strong>
+                </div>
+
+                <div>
+                    🪙 Coins
+                    <strong id="profileCoins">
+                        0
+                    </strong>
+                </div>
+
+                <div>
+                    🏆 Achievements
+                    <strong id="achievementCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             ACHIEVEMENT PANEL
+        ================================================== -->
+
+        <aside
+            id="achievementPanel"
+            class="side-panel hidden">
+
+            <button
+                id="closeAchievementBtn"
+                class="close-button">
+
+                ✕
+
+            </button>
+
+            <h2>
+                🏆 Achievements
+            </h2>
+
+            <div id="achievementList">
+
+                <div class="achievement locked">
+
+                    <span>
+                        🌟
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            First Step
+                        </strong>
+
+                        <p>
+                            Complete your first challenge.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement locked">
+
+                    <span>
+                        🔥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Hot Streak
+                        </strong>
+
+                        <p>
+                            Get 5 correct answers in a row.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement locked">
+
+                    <span>
+                        🧠
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Word Master
+                        </strong>
+
+                        <p>
+                            Answer 50 questions correctly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="achievement locked">
+
+                    <span>
+                        🏆
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Perfect Hero
+                        </strong>
+
+                        <p>
+                            Get 100% in a stage.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             BOTTOM NAVIGATION
+        ================================================== -->
+
+        <nav class="bottom-navigation">
+
+            <button
+                class="nav-button active"
+                data-screen="home">
+
+                🗺️
+                <span>
+                    Adventure
+                </span>
+
+            </button>
+
+
+            <button
+                id="profileButton"
+                class="nav-button">
+
+                🧑‍🎓
+                <span>
+                    Profile
+                </span>
+
+            </button>
+
+
+            <button
+                id="achievementButton"
+                class="nav-button">
+
+                🏆
+                <span>
+                    Achievements
+                </span>
+
+            </button>
+
+
+            <button
+                id="settingsButton"
+                class="nav-button">
+
+                ⚙️
+                <span>
+                    Settings
+                </span>
+
+            </button>
+
+        </nav>
+
+
+        <!-- =================================================
+             SETTINGS PANEL
+        ================================================== -->
+
+        <aside
+            id="settingsPanel"
+            class="side-panel hidden">
+
+            <button
+                id="closeSettingsBtn"
+                class="close-button">
+
+                ✕
+
+            </button>
+
+            <h2>
+                ⚙️ Settings
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        🔊 Sound
+                    </strong>
+
+                    <p>
+                        Sound effects
+                    </p>
+
+                </div>
+
+                <button
+                    id="soundToggle"
+                    class="toggle-button active">
+
+                    ON
+
+                </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>                  
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        💾 Save Progress
+                    </strong>
+
+                    <p>
+                        Your progress is saved automatically.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="resetProgressButton"
+                class="danger-button">
+
+                Reset Progress
+
+            </button>
+
+        </aside>
+
+
+        <!-- =================================================
+             NOTIFICATION
+        ================================================== -->
+
+        <div
+            id="notification"
+            class="notification">
+
+            <span id="notificationIcon">
+                🎉
+            </span>
+
+            <span id="notificationText">
+                Achievement unlocked!
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             CONFETTI CONTAINER
+        ================================================== -->
+
+        <canvas
+            id="confettiCanvas">
+        </canvas>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         AUDIO
+    ====================================================== -->
+
+    <audio
+        id="correctSound"
+        preload="auto">
+
+        <source
+            src="sounds/correct.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <audio
+        id="wrongSound"
+        preload="auto">
+
+        <source
+            src="sounds/wrong.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <audio
+        id="clickSound"
+        preload="auto">
+
+        <source
+            src="sounds/click.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+  
+
+    <audio
+        id="levelUpSound"
+        preload="auto">
+
+        <source
+            src="sounds/level-up.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <audio
+        id="finishSound"
+        preload="auto">
+
+        <source
+            src="sounds/finish.mp3"
+            type="audio/mpeg">
+
+    </audio>
+  
+
+    <script src="script.js"></script>
+
+</body>
+</html>
